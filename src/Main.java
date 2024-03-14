@@ -9,12 +9,16 @@ public class Main {
             File file = new File(path);
             boolean fileExists = file.exists();
             boolean isDirectory = file.isDirectory();
-            if (fileExists == isDirectory) {
+            boolean isFile = file.isFile();
+            if (isDirectory || !fileExists) {
                 System.out.println("Файл не существует или указан путь к папке");
                 continue;
-            } else System.out.println("Путь указан верно");
-            System.out.println("Это файл номер " + count);
-            count++;
+            }
+            if (isFile) {
+                System.out.println("Путь указан верно");
+                System.out.println("Это файл номер " + count);
+                count++;
+            }
         }
     }
 }
